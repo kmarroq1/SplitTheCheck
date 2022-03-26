@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit ]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -47,15 +47,29 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # DELETE /restaurants/1 or /restaurants/1.json
-  def destroy
-    @restaurant.destroy
-
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
-      format.json { head :no_content }
-    end
+  #Adds a vote for the restaurant splitting the check
+  def splitVote()
+    @restaurant.splitVote = @restaurant.splitVote + 1
+    @restaurant.save
+    redirect_to restaurants_path
   end
+
+  #Adds a vote for the restaurant not splitting the check
+  def voteNoSplit
+    @restaurant.noSplitVote = @restaurant.noSplitVote + 1
+    @restaurant.save
+    redirect_to restaurants_path
+  end
+
+  # DELETE /restaurants/1 or /restaurants/1.json
+  # def destroy
+  #   @restaurant.destroy
+  #
+  #   respond_to do |format|
+  #     format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

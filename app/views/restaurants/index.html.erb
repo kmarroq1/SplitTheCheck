@@ -19,8 +19,8 @@
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.location %></td>
-        <td><button type="button" name="splitButton">Vote</button></td>
-        <td><button type="button" name="noSplitButton">Vote</button></td>
+        <td><%= button_to "Vote", splitVote_path(restaurant), method: "put" %></td>
+        <td><%= button_to "Vote", voteNoSplit_path(restaurant), method: "put" %></td>
         <td><%= restaurant.splitVote %> | <%= restaurant.noSplitVote %></td>
         <td><%= link_to 'Show', restaurant %></td>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td

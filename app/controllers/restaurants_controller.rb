@@ -63,7 +63,7 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] + "%")
+    @restaurants = Restaurant.where("name LIKE ? OR location LIKE ?", "%" + params[:q] + "%", "%" + params[:q] + "%")
   end
 
   # DELETE /restaurants/1 or /restaurants/1.json

@@ -1,0 +1,27 @@
+<h1>Search Results</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant Name</th>
+      <th>Location</th>
+      <th>Splits Checks</th>
+      <th>Does Not Split Checks</th>
+      <th>Results</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.location %></td>
+        <td><%= button_to "Vote", splitVote_path(restaurant), method: "put" %></td>
+        <td><%= button_to "Vote", voteNoSplit_path(restaurant), method: "put" %></td>
+        <td><%= restaurant.splitVote %> | <%= restaurant.noSplitVote %></td>
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td
+      </tr>
+    <% end %>
+  </tbody>
+</table>

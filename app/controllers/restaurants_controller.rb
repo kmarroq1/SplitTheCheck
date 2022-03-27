@@ -62,6 +62,10 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
+  def search
+    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] + "%")
+  end
+
   # DELETE /restaurants/1 or /restaurants/1.json
   # def destroy
   #   @restaurant.destroy

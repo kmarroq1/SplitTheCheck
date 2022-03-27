@@ -5,9 +5,15 @@ class RestaurantsTest < ApplicationSystemTestCase
     @restaurant = restaurants(:one)
   end
 
+  test "voting" do
+    visit restaurants_url
+    click_on "Vote", match: :first
+    assert_text "2 | 1"
+  end
+
   test "visiting the index" do
     visit restaurants_url
-    assert_selector "h1", text: "Restaurants"
+    assert_selector "th", text: "Restaurant Name"
   end
 
   test "creating a Restaurant" do
@@ -16,8 +22,6 @@ class RestaurantsTest < ApplicationSystemTestCase
 
     fill_in "Location", with: @restaurant.location
     fill_in "Name", with: @restaurant.name
-    fill_in "Nosplitvote", with: @restaurant.noSplitVote
-    fill_in "Splitvote", with: @restaurant.splitVote
     click_on "Create Restaurant"
 
     assert_text "Restaurant was successfully created"
@@ -30,20 +34,18 @@ class RestaurantsTest < ApplicationSystemTestCase
 
     fill_in "Location", with: @restaurant.location
     fill_in "Name", with: @restaurant.name
-    fill_in "Nosplitvote", with: @restaurant.noSplitVote
-    fill_in "Splitvote", with: @restaurant.splitVote
     click_on "Update Restaurant"
 
     assert_text "Restaurant was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Restaurant" do
-    visit restaurants_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Restaurant was successfully destroyed"
-  end
+  # test "destroying a Restaurant" do
+  #   visit restaurants_url
+  #   page.accept_confirm do
+  #     click_on "Destroy", match: :first
+  #   end
+  #
+  #   assert_text "Restaurant was successfully destroyed"
+  # end
 end

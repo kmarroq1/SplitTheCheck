@@ -5,6 +5,11 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     @restaurant = restaurants(:one)
   end
 
+  test "should search" do
+    get 'search'
+    assert_response :success
+  end
+
   test "should get index" do
     get restaurants_url
     assert_response :success

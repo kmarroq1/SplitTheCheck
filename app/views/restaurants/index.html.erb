@@ -19,7 +19,7 @@
         <td><%= restaurant.location %></td>
         <td><%= button_to "Vote", splitVote_path(restaurant), method: "put" %></td>
         <td><%= button_to "Vote", voteNoSplit_path(restaurant), method: "put" %></td>
-        <td><%= restaurant.splitVote %> | <%= restaurant.noSplitVote %></td>
+        <td class="voteResult"><%= restaurant.splitVote %> | <%= restaurant.noSplitVote %></td>
         <td><%= link_to 'Show', restaurant %></td>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td
       </tr>

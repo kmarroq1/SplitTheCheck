@@ -6,7 +6,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should search" do
-    get 'search'
+    get '/search?q='
     assert_response :success
   end
 

@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: restaurant) do |form| %>
   <% if restaurant.errors.any? %>
     <div id="error_explanation">
@@ -10,28 +11,19 @@
       </ul>
     </div>
   <% end %>
-
+  <br>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+  <br>
   <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location %>
   </div>
-
-  <div class="field">
-    <%= form.label :splitVote %>
-    <%= form.number_field :splitVote %>
-  </div>
-
-  <div class="field">
-    <%= form.label :noSplitVote %>
-    <%= form.number_field :noSplitVote %>
-  </div>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

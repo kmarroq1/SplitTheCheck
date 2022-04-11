@@ -20,16 +20,16 @@
           <%= link_to "Hi, #{current_user.email}", edit_user_registration_path %>
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           <%= link_to 'New Restaurant', new_restaurant_path %>
+          <div class="search-container">
+            <form action="/search">
+              <input type="text" placeholder="Search.." name="q">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
         <% else %>
           <%= link_to 'Sign In', new_user_session_path %>
           <%= link_to 'Sign Up', new_user_registration_path %>
         <% end %>
-      </div>
-      <div class="search-container">
-        <form action="/search">
-          <input type="text" placeholder="Search.." name="q">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
       </div>
     </div>
     <%= yield %>

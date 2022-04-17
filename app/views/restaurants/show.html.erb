@@ -33,7 +33,7 @@
     <tbody>
       <% @restaurant.votes.each do |vote| %>
         <tr>
-          <td><%= current_user.email %></td>
+          <td><%= vote.user_id %></td>
           <td><%= vote.isSplitVote %></td>
         </tr>
       <% end %>

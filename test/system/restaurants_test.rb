@@ -1,23 +1,22 @@
 require "application_system_test_case"
 
 class RestaurantsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
   setup do
     @restaurant = restaurants(:one)
-  end
+    @user = users(:one)
 
-  test "voting" do
     visit restaurants_url
-    click_on "Vote", match: :first
-    assert_text "2 | 1"
+    fill_in "user[email]", with: @user.email
+    fill_in "user[password]", with: "test1234"
+    click_on "Log in"
   end
 
   test "visiting the index" do
-    visit restaurants_url
     assert_selector "th", text: "Restaurant Name"
   end
 
   test "creating a Restaurant" do
-    visit restaurants_url
     click_on "New Restaurant"
 
     fill_in "Location", with: @restaurant.location
@@ -29,7 +28,6 @@ class RestaurantsTest < ApplicationSystemTestCase
   end
 
   test "updating a Restaurant" do
-    visit restaurants_url
     click_on "Edit", match: :first
 
     fill_in "Location", with: @restaurant.location

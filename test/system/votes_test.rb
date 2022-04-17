@@ -27,22 +27,22 @@ class VotesTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "updating a Vote" do
-    click_on "Edit", match: :first
+  # test "updating a Vote" do
+  #   click_on "Edit", match: :first
+  #
+  #   fill_in "Restaurant", with: @vote.restaurant_id
+  #   fill_in "User", with: @vote.user_id
+  #   click_on "Update Vote"
+  #
+  #   assert_text "Vote was successfully updated"
+  #   click_on "Back"
+  # end
 
-    fill_in "Restaurant", with: @vote.restaurant_id
-    fill_in "User", with: @vote.user_id
-    click_on "Update Vote"
-
-    assert_text "Vote was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Vote" do
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Vote was successfully destroyed"
-  end
+  # test "destroying a Vote" do
+  #   page.accept_confirm do
+  #     click_on "Destroy", match: :first
+  #   end
+  #
+  #   assert_text "Vote was successfully destroyed"
+  # end
 end

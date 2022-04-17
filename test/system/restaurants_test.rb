@@ -12,6 +12,16 @@ class RestaurantsTest < ApplicationSystemTestCase
     click_on "Log in"
   end
 
+  test "should vote to split" do
+    click_on "Vote Yes", match: :first
+    assert_text "2 | 0"
+  end
+
+  test "should vote to not split" do
+    click_on "Vote No", match: :first
+    assert_text "1 | 1"
+  end
+
   test "visiting the index" do
     assert_selector "th", text: "Restaurant Name"
   end
@@ -43,7 +53,7 @@ class RestaurantsTest < ApplicationSystemTestCase
   #   page.accept_confirm do
   #     click_on "Destroy", match: :first
   #   end
-  #
+
   #   assert_text "Restaurant was successfully destroyed"
   # end
 end

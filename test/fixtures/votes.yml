@@ -4,8 +4,3 @@ one:
   user: one
   restaurant: one
   isSplitVote: true
-
-two:
-  user: two
-  restaurant: two
-  isSplitVote: false

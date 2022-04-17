@@ -8,9 +8,15 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     @votes = votes(:one)
   end
 
-  test "should search" do
+  test "should search by name" do
     sign_in @user
-    get '/search?q='
+    get '/search?q=Name'
+    assert_response :success
+  end
+
+  test "should search by location" do
+    sign_in @user
+    get '/search?q=Location'
     assert_response :success
   end
 

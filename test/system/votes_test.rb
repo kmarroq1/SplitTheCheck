@@ -16,6 +16,7 @@ class VotesTest < ApplicationSystemTestCase
 
     fill_in "Restaurant", with: @vote.restaurant_id
     fill_in "User", with: @vote.user_id
+    fill_in "User", with: @vote.isSplitVote
     click_on "Create Vote"
 
     assert_text "Vote was successfully created"
@@ -28,6 +29,7 @@ class VotesTest < ApplicationSystemTestCase
 
     fill_in "Restaurant", with: @vote.restaurant_id
     fill_in "User", with: @vote.user_id
+    fill_in "User", with: @vote.isSplitVote
     click_on "Update Vote"
 
     assert_text "Vote was successfully updated"

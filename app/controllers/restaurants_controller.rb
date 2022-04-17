@@ -52,6 +52,10 @@ class RestaurantsController < ApplicationController
   def splitVote()
     @restaurant.splitVote = @restaurant.splitVote + 1
     @restaurant.save
+
+    @vote = Vote.new(:user => current_user, :restaurant => @restaurant, :isSplitVote => true)
+    @vote.save
+
     redirect_to restaurants_path
   end
 
@@ -59,6 +63,10 @@ class RestaurantsController < ApplicationController
   def voteNoSplit
     @restaurant.noSplitVote = @restaurant.noSplitVote + 1
     @restaurant.save
+
+    @vote = Vote.new(:user => current_user, :restaurant => @restaurant, :isSplitVote => false)
+    @vote.save
+
     redirect_to restaurants_path
   end
 

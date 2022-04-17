@@ -12,12 +12,12 @@
 
 <p>
   <strong>Will Split Vote:</strong>
-  <%= @restaurant.splitVote %>
+  <%= @restaurant.votes.where(isSplitVote: true).count %>
 </p>
 
 <p>
   <strong>Won't Split Vote:</strong>
-  <%= @restaurant.noSplitVote %>
+  <%= @restaurant.votes.where(isSplitVote: false).count %>
 </p>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |

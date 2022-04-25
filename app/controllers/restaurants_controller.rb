@@ -75,7 +75,7 @@ class RestaurantsController < ApplicationController
   end
 
   def addComment
-    @restaurant.add_comment(current_user.id, comment_params[:comment])
+    Comment.new(restaurant_id:@restaurant.id, user_id:current_user.id, comment:comment_params[:comment]).save
 
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: "Comment was successfully created." }

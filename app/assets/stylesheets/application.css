@@ -5,6 +5,14 @@ body {
  font-family: Arial, Helvetica, sans-serif;
 }
 
+.column {
+  flex: 50%;
+}
+
+.row {
+  display: flex;
+}
+
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;

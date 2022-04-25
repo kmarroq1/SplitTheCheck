@@ -20,26 +20,53 @@
   <%= @restaurant.votes.where(isSplitVote: false).count %>
 </p>
 <br>
-<p>
-  <strong>Voting History:</strong>
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Vote - Will the restaurant split the check?</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <% @restaurant.votes.each do |vote| %>
+<%= button_to 'Add Comment', restaurants_new_comment_path(@restaurant) %> <br>
+
+<br>
+<div class="row">
+  <div class="column">
+    <strong>Voting History:</strong>
+    <table>
+      <thead>
         <tr>
-          <td><%= vote.user_id %></td>
-          <td><%= vote.isSplitVote %></td>
+          <th>User</th>
+          <th>Vote - Will the restaurant split the check?</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</p>
+      </thead>
+
+      <tbody>
+        <% @restaurant.votes.each do |vote| %>
+          <tr>
+            <td><%= vote.user_id %></td>
+            <td><%= vote.isSplitVote %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="column">
+    <strong>Comments:</strong>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @restaurant.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user_id %></td>
+            <td><%= comment.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

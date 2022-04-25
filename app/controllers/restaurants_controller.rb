@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit ]
+  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment ]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -74,6 +74,19 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.where("name LIKE ? OR location LIKE ?", "%" + params[:q] + "%", "%" + params[:q] + "%")
   end
 
+  def addComment
+    @restaurant.add_comment(current_user.id, comment_params[:comment])
+
+    respond_to do |format|
+      format.html { redirect_to restaurants_url, notice: "Comment was successfully created." }
+      format.json { head :no_content }
+    end
+  end
+
+  def newComment
+    @comment = Comment.new
+  end
+
   # DELETE /restaurants/1 or /restaurants/1.json
   # def destroy
   #   @restaurant.destroy
@@ -93,5 +106,9 @@ class RestaurantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :location, :splitVote, :noSplitVote)
+    end
+
+    def comment_params
+      params.require(:comment).permit(:comment)
     end
 end

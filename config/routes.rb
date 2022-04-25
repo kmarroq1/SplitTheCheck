@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   put '/restaurant/:id/splitVote', to: 'restaurants#splitVote', as: 'splitVote'
   put '/restaurant/:id/noSplitVote', to: 'restaurants#voteNoSplit', as: 'voteNoSplit'
   get 'search', to: 'restaurants#search'
+  get 'restaurants/:id/newComment', to: 'restaurants#newComment'
+  post "restaurants/:id/newComment", to: "restaurants#newComment", as: "restaurants_new_comment"
+  post "restaurants/:id/comment", to: 'restaurants#addComment', as: 'restaurants_add_comment'
 end

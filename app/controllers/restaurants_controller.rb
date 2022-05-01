@@ -95,7 +95,16 @@ class RestaurantsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def removeFavorite
+    @restaurant.favorite.destroy
+
+    respond_to do |format|
+      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully unfavorited." }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /restaurants/1 or /restaurants/1.json
   # def destroy
   #   @restaurant.destroy

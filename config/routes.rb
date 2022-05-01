@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'restaurants/:id/newComment', to: 'restaurants#newComment'
   post "restaurants/:id/newComment", to: "restaurants#newComment", as: "restaurants_new_comment"
   post "restaurants/:id/comment", to: 'restaurants#addComment', as: 'restaurants_add_comment'
+  get "users/:id", to: 'users#show', as: "users_show"
 end

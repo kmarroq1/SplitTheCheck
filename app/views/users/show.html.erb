@@ -1,0 +1,64 @@
+<h2>User Summary</h2>
+
+<div class="row">
+  <div class="column">
+    <h3>My Comments</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></td>
+            <td><%= comment.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="column">
+    <h3>My Votes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Vote - Splits the check?</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @votes.each do |vote| %>
+          <tr>
+            <td><%= link_to vote.restaurant.name, restaurant_path(vote.restaurant) %></td>
+            <td><%= vote.isSplitVote %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="column">
+    <h3>My Favorites</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @votes.each do |vote| %>
+          <tr>
+            <td><%= link_to vote.restaurant.name, restaurant_path(vote.restaurant) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

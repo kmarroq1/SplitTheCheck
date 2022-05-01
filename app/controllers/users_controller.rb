@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = current_user
     @comments = @user.comments
     @votes = @user.votes
-    @favorites = @user.favorites.group(:restaurant_id)
+    @favorites = @user.favorites
   end
 
   private

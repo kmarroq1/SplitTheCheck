@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorites
 
   def already_favorited?(restaurant)
-    self.favorites.find(:all, :conditions => ['restaurant_id = ?', restaurant.id]).size > 0
+    self.favorites.where(id: restaurant.id).size > 0
   end
-  
+
 end

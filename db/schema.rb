@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2022_04_24_215433) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "restaurant_id", null: false
+    t.string "favoriteable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id", "user_id"], name: "index_favorites_on_restaurant_id_and_user_id", unique: true
     t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end

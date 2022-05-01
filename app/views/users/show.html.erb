@@ -8,6 +8,7 @@
         <tr>
           <th>Restaurant</th>
           <th>Comment</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -16,6 +17,7 @@
           <tr>
             <td><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></td>
             <td><%= comment.comment %></td>
+            <td><%= comment.created_at.to_date %></td>
           </tr>
         <% end %>
       </tbody>
@@ -37,6 +39,7 @@
           <tr>
             <td><%= link_to vote.restaurant.name, restaurant_path(vote.restaurant) %></td>
             <td><%= vote.isSplitVote %></td>
+            <td><%= vote.created_at.to_date %></td>
           </tr>
         <% end %>
       </tbody>
@@ -53,9 +56,9 @@
       </thead>
 
       <tbody>
-        <% @votes.each do |vote| %>
+        <% @favorites.each do |favorite| %>
           <tr>
-            <td><%= link_to vote.restaurant.name, restaurant_path(vote.restaurant) %></td>
+            <td><%= link_to favorite.restaurant.name, restaurant_path(favorite.restaurant) %></td>
           </tr>
         <% end %>
       </tbody>

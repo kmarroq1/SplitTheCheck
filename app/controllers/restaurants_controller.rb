@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment ]
+  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment addFavorite ]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -87,6 +87,15 @@ class RestaurantsController < ApplicationController
     @comment = Comment.new
   end
 
+  def addFavorite
+    Favorite.create(restaurant_id:@restaurant.id, user_id:current_user.id).save
+
+    respond_to do |format|
+      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully favorited." }
+      format.json { head :no_content }
+    end
+  end
+  
   # DELETE /restaurants/1 or /restaurants/1.json
   # def destroy
   #   @restaurant.destroy

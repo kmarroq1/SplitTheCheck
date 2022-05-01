@@ -20,7 +20,7 @@
   <%= @restaurant.votes.where(isSplitVote: false).count %>
 </p>
 <br>
-
+<%= button_to 'Add To Favorites', restaurants_add_favorite_path(@restaurant) %> <br>
 <%= button_to 'Add Comment', restaurants_new_comment_path(@restaurant) %> <br>
 
 <br>

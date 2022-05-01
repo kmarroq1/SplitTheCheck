@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :votes
   has_many :comments
+  has_many :favorites
+
+  def already_favorited?(restaurant)
+    self.favorites.find(:all, :conditions => ['restaurant_id = ?', restaurant.id]).size > 0
+  end
+  
 end

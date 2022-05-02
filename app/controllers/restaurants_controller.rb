@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment addFavorite ]
+  before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment addFavorite removeFavorite ]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -97,10 +97,13 @@ class RestaurantsController < ApplicationController
   end
 
   def removeFavorite
-    @restaurant.favorite.destroy
+    @favorites = Favorite.where(user_id: current_user.id, restaurant_id: @restaurant.id)
+    @favorites.each do |favorite|
+      favorite.destroy
+    end
 
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully unfavorited." }
+      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully unfavorited" }
       format.json { head :no_content }
     end
   end

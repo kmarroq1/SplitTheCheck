@@ -21,7 +21,9 @@
         <td><%= button_to "Vote No", voteNoSplit_path(restaurant), method: "put" %></td>
         <td class="voteResult"><%= restaurant.votes.where(isSplitVote: true).count %> | <%= restaurant.votes.where(isSplitVote: false).count %></td>
         <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

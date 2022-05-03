@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update splitVote voteNoSplit newComment addComment addFavorite removeFavorite ]
+  before_action :authenticate_user!, only: %i[ edit new update destroy splitVote voteNoSplit newComment addComment addFavorite removeFavorite ]
 
   # GET /restaurants or /restaurants.json
   def index

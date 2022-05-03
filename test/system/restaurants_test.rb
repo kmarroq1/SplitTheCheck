@@ -7,6 +7,8 @@ class RestaurantsTest < ApplicationSystemTestCase
     @user = users(:one)
 
     visit restaurants_url
+
+    click_on "Vote Yes", match: :first
     fill_in "user[email]", with: @user.email
     fill_in "user[password]", with: "test1234"
     click_on "Log in"

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :favorites
-  resources :comments
+  resources :favorites, except: [:index, :new, :create, :destroy]
+  resources :comments, except: [:index, :new, :create, :destroy]
   resources :votes
   devise_for :users
   resources :restaurants, except: [:destroy]

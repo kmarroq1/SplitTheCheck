@@ -6,6 +6,15 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @restaurant = restaurants(:one)
     @votes = votes(:one)
+    @comment = comments(:one)
+    @favorite = favorites(:one)
+  end
+
+  test 'add comment to restaurant' do
+    sign_in @user
+    assert_difference 'Comment.count', 1 do
+      post restaurants_add_comment_url(@restaurant), params: {comment: {comment: @comment.comment}}
+    end
   end
 
   test "should search by name" do

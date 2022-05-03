@@ -12,6 +12,18 @@ class RestaurantsTest < ApplicationSystemTestCase
     click_on "Log in"
   end
 
+  test "should favorite restaurant" do
+    click_on "Show"
+    click_on "Add To Favorites"
+    assert_text "Restaurant was successfully favorited"
+  end
+
+  test "should unfavorite restaurant" do
+    click_on "Show"
+    click_on "Remove From Favorites"
+    assert_text "Restaurant was successfully unfavorited"
+  end
+
   test "should vote to split" do
     click_on "Vote Yes", match: :first
     assert_text "2 | 0"

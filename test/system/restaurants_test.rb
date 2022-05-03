@@ -14,6 +14,8 @@ class RestaurantsTest < ApplicationSystemTestCase
 
   test "should favorite restaurant" do
     click_on "Show"
+    click_on "Remove From Favorites"
+    click_on "Show"
     click_on "Add To Favorites"
     assert_text "Restaurant was successfully favorited"
   end
